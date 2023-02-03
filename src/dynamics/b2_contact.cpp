@@ -104,6 +104,7 @@ b2Contact* b2Contact::Create(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtu
 
 void b2Contact::Destroy(b2Contact* contact, b2BlockAllocator* allocator)
 {
+    if(!s_initialize) return; // happens on optimized builds osx
 	b2Assert(s_initialized == true);
 
 	b2Fixture* fixtureA = contact->m_fixtureA;
